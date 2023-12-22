@@ -13,7 +13,7 @@ function Home() {
   const data = useFetch('https://dummyjson.com/products')
   console.log(data);
 
-  //dispatch or calling function inside action
+  //dispatch or calling function inside action (from wishlistSlice.js)
   const dispatch = useDispatch()
 
   return (
@@ -30,6 +30,8 @@ function Home() {
                   <p>Price: € {item.price}</p>
                 </Card.Text>
                 <div className='d-flex align-items-center justify-content-between'>
+
+                {/* dispatch or calling function inside action (from wishlistSlice.js) // passing item(ech item is an object) to action in wishlistSlice */}
                   <Button onClick={() => dispatch(addToWishlist(item))} variant="outline-danger btn rounded"><i class="fa-solid fa-heart" ></i> </Button>
                   <Button onClick={()=>dispatch(addToCart(item))} variant="outline-success btn rounded"><i class="fa-solid fa-cart-plus" ></i> </Button>
                 </div>

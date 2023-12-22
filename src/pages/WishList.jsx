@@ -10,18 +10,23 @@ import { addToCart } from '../redux/slices/cartSlice';
 
 function WishList() {
 
+  //accessing state from store
   const wishlistArray = useSelector((state) => state.wishlistReducer)
   console.log(wishlistArray);
+
+  //calling action from whislistSlice (removeFromWishlist function)
   const dispatch = useDispatch()
 
+  //add item to cart from wishlist and also remove that item from wishlist when click on wishlist button in the card
   const handleWishlist = (item)=>{
-    dispatch(addToCart(item))
-    dispatch(removeFromWishlist(item.id))
+    dispatch(addToCart(item)) //adding item to cart
+    dispatch(removeFromWishlist(item.id)) //removing item from wishlist
   }
 
   return (
     <div>
       <Row className='ms-5 me-3' style={{ marginTop: '70px' }}>
+
         {wishlistArray?.length > 0 ?
           wishlistArray?.map((item) => (<Col style={{ marginTop: '100px' }} className='mb-5' sm={12} md={6} lg={4} xl={3}>
             <Card style={{ width: '18rem', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19' }}>
@@ -33,6 +38,7 @@ function WishList() {
                   <p>Price: € {item.price}</p>
                 </Card.Text>
                 <div className='d-flex align-items-center justify-content-between'>
+                {/* calling action from whislistSlice (removeFromWishlist function) //passing id of item to wishlistSlice action payload */}
                   <Button onClick={()=>dispatch(removeFromWishlist(item.id))} variant="outline-danger btn rounded"><i class="fa-solid fa-trash" ></i> </Button>
                   <Button onClick={()=>handleWishlist(item)} variant="outline-success btn rounded"><i class="fa-solid fa-cart-plus" ></i> </Button>
                 </div>

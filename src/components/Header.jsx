@@ -9,9 +9,11 @@ import { useSelector } from 'react-redux';
 
 function Header() {
 
-  const wishlist = useSelector((state)=> state.wishlistReducer) //this state represents reducer inside the store
-  console.log(wishlist); //get empty array
+  //accessing state from store (data are in this state)
+  const wishlist = useSelector((state)=> state.wishlistReducer) //this state represents reducer inside the store.
+  console.log(wishlist); //get empty array first
 
+//accessing state from store (data are in this state)
   const cart = useSelector((state)=>state.cartReducer)
   console.log(cart);
 
@@ -24,8 +26,10 @@ E-Cart</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link className='btn border rounded border-secondary ms-2 mt-2'><Link to={'/wishlist'} style={{textDecoration:'none',color:'white'}}><i class="fa-solid fa-heart me-2" ></i>WishList <Badge bg="secondary" className='rounded ms-2'>{wishlist.length}</Badge></Link></Nav.Link>
-            <Nav.Link className='btn border rounded border-secondary ms-2 mt-2' ><Link to={'/cart'} style={{textDecoration:'none',color:'white'}}><i class="fa-solid fa-cart-shopping me-2"></i> Cart <Badge bg="secondary" className='rounded ms-2'>{cart.length}</Badge></Link></Nav.Link>
+            <Nav.Link className='btn border rounded border-secondary ms-2 mt-2'><Link to={'/wishlist'} style={{textDecoration:'none',color:'white'}}><i class="fa-solid fa-heart me-2" ></i>WishList <Badge bg="secondary" 
+            className='rounded ms-2'>{wishlist.length}</Badge></Link></Nav.Link>
+            <Nav.Link className='btn border rounded border-secondary ms-2 mt-2' ><Link to={'/cart'} style={{textDecoration:'none',color:'white'}}><i class="fa-solid fa-cart-shopping me-2"></i> Cart <Badge bg="secondary" 
+            className='rounded ms-2'>{cart.length}</Badge></Link></Nav.Link>
             
           </Nav>
         </Navbar.Collapse>

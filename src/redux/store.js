@@ -9,5 +9,5 @@ const store = configureStore({
     }
 })
 
-//components needs store
+//components needs store // give this store inside index.js inside Provider tag
 export default store
